@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "./axios";
+const base_url = "https://image.tmdb.org/t/p/original/"
 
 const Row = ({title, fetchURL}) => {
     const [movies, setMovies] = useState([])
@@ -12,6 +13,7 @@ const Row = ({title, fetchURL}) => {
         async function fetchData(){
             const request = await axios.get(fetchURL);
             // console.log(request);
+            // console.table(request.data.results);
             setMovies(request.data.results)
             return request;
         }
@@ -21,8 +23,14 @@ const Row = ({title, fetchURL}) => {
     
 
     return ( 
-        <div>
+        <div className="row">
             <h2>{title}</h2>
+            <div className="row__posters">
+                {/* several row__poster(S) */}
+                {movies.map( movie => (
+                    <img src={`${base_url}${movie.poster_path}`} alt={movie.name} />
+                ) )}
+            </div>
             {/* {container => poster} */}
         </div>
      );
