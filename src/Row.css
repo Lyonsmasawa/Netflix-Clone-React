@@ -5,5 +5,10 @@
     width: 100%;
     object-fit: contain; 
     /* maintains aspect ratio */
+    margin-right: 10px;
     max-height: 100px;
+    transition: transform 450ms;
+}
+.row__poster:hover{
+    transform: scale(1.08);
 }
