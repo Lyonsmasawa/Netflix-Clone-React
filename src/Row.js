@@ -7,10 +7,12 @@ const Row = ({title, fetchURL}) => {
     // a snippet of code which runs based on a specific condition or variable
     useEffect(() => {
       return () => {
-        // [] RUNONCE WHEN THE ROW LOADS 
-        // [movies] runs everytime the movies change
+        // [] RUN ONes WHEN THE ROW LOADS 
+        // [movies] runs every time the movies change
         async function fetchData(){
-            const request = await axios.get(fetchURL)
+            const request = await axios.get(fetchURL);
+            console.log(request);
+            return request;
         }
         fetchData()
       }
