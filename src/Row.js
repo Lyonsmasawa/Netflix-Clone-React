@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "./axios";
 import "./Row.css";
 
-const Row = ({title, fetchURL}) => {
+const Row = ({title, fetchURL, isLargeRow}) => {
     const base_url = "https://image.tmdb.org/t/p/original/"
     const [movies, setMovies] = useState([])
 
@@ -32,7 +32,7 @@ const Row = ({title, fetchURL}) => {
                     <img 
                     key={movie.id}
                     // this key optimizes react so that if something changes in the row react doesn't actually rerender the whole row, it just re renders what is supposed to be rerendered thus makes it faster
-                    className="row__poster" src={`${base_url}${movie.poster_path}`} alt={movie.name} />
+                    className={`row__poster ${isLargeRow && "row__posterLarge"}`} src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
                 ) )}
             </div>
             {/* {container => poster} */}
