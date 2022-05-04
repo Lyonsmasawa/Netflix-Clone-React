@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "./axios";
-const base_url = "https://image.tmdb.org/t/p/original/"
+import "./Row.css";
 
 const Row = ({title, fetchURL}) => {
+    const base_url = "https://image.tmdb.org/t/p/original/"
     const [movies, setMovies] = useState([])
 
     // a snippet of code which runs based on a specific condition or variable
