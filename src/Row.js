@@ -11,12 +11,13 @@ const Row = ({title, fetchURL}) => {
         // [movies] runs every time the movies change
         async function fetchData(){
             const request = await axios.get(fetchURL);
-            console.log(request);
+            // console.log(request);
+            setMovies(request.data.results)
             return request;
         }
         fetchData()
       }
-    }, [])
+    }, [fetchURL])
     
 
     return ( 
