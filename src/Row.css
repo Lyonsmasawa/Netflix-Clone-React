@@ -1,8 +1,18 @@
 .row__posters{
     display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+}
+.row__posters {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+}
+.row__posters::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 .row__poster{
-    width: 100%;
+    /* width: 100%; */
     object-fit: contain; 
     /* maintains aspect ratio */
     margin-right: 10px;
