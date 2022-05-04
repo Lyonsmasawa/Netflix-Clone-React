@@ -29,7 +29,10 @@ const Row = ({title, fetchURL}) => {
             <div className="row__posters">
                 {/* several row__poster(S) */}
                 {movies.map( movie => (
-                    <img className="row__poster" src={`${base_url}${movie.poster_path}`} alt={movie.name} />
+                    <img 
+                    key={movie.id}
+                    // this key optimizes react so that if something changes in the row react doesn't actually rerender the whole row, it just re renders what is supposed to be rerendered thus makes it faster
+                    className="row__poster" src={`${base_url}${movie.poster_path}`} alt={movie.name} />
                 ) )}
             </div>
             {/* {container => poster} */}
