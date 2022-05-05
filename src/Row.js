@@ -7,7 +7,7 @@ import "./Row.css";
 const Row = ({title, fetchURL, isLargeRow}) => {
     const base_url = "https://image.tmdb.org/t/p/original/";
     const [movies, setMovies] = useState([]);
-    const [trailerURL, setTrailerURL] = useState([]) 
+    const [trailerURL, setTrailerURL] = useState("");
 
     // a snippet of code which runs based on a specific condition or variable
     useEffect(() => {
@@ -31,18 +31,20 @@ const Row = ({title, fetchURL, isLargeRow}) => {
         playerVars: {
           // https://developers.google.com/youtube/player_parameters
           autoplay: 1,
-        },
+        }
     }
 
     const handleClick = (movie) => {
         if (trailerURL) {
-            setTrailerURL('');
+            setTrailerURL("");
         } else {
             movieTrailer(movie?.name || "")
             .then((url) => {
-                // https://www.youtube.com/watch?v=tQ0yjYUFKAE&list=RDEMUxNgZtfAj-k7qQMnB1fIgQ&index=27
-                const urlParams = new URL(url).search;
-            });
+                // https://www.youtube.com/watch?v=tQ0yjYUFKAE
+                const urlParams = new URLSearchParams(new URL(url).search); //picks the v=tQ0yjYUFKAE part which is the search
+                setTrailerURL(urlParams.get("v"));
+            })
+            .catch((error) => console.log(error));
         }
     }
     

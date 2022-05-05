@@ -30,7 +30,7 @@ function Banner() {
         backgroundSize: "cover",
         backgroundImage: `url("${image_url}${movie?.backdrop_path}")`,
         // the ? mark is if there is no movie to handle it elegantly 
-        backgroundPosition: "center center",
+        backgroundPosition: "top",
     }}>
         <div className="banner__contents">
             <h1 className='banner__title'>{movie?.title || movie?.name || movie?.original_name}</h1>
