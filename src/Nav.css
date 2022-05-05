@@ -2,12 +2,15 @@
     position: fixed;
     top: 0;
     height: 60px;
-    background-color: #111;
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 20px;
     z-index: 1;
+}
+
+.nav__black{
+
 }
 
 .nav__logo {
