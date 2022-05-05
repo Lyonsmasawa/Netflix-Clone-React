@@ -1,3 +1,4 @@
+import movieTrailer from "movie-trailer";
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 import axios from "./axios";
@@ -6,6 +7,7 @@ import "./Row.css";
 const Row = ({title, fetchURL, isLargeRow}) => {
     const base_url = "https://image.tmdb.org/t/p/original/";
     const [movies, setMovies] = useState([]);
+    const [trailerURL, setTrailerURL] = useState([]) 
 
     // a snippet of code which runs based on a specific condition or variable
     useEffect(() => {
@@ -31,6 +33,18 @@ const Row = ({title, fetchURL, isLargeRow}) => {
           autoplay: 1,
         },
     }
+
+    const handleClick = (movie) => {
+        if (trailerURL) {
+            setTrailerURL('');
+        } else {
+            movieTrailer(movie?.name || "")
+            .then((url) => {
+                // https://www.youtube.com/watch?v=tQ0yjYUFKAE&list=RDEMUxNgZtfAj-k7qQMnB1fIgQ&index=27
+                const urlParams = new URL(url).search;
+            });
+        }
+    }
     
 
     return ( 
@@ -41,11 +55,12 @@ const Row = ({title, fetchURL, isLargeRow}) => {
                 {movies.map( movie => (
                     <img 
                     key={movie.id}
+                    onClick={ () => handleClick(movie)}
                     // this key optimizes react so that if something changes in the row react doesn't actually rerender the whole row, it just re renders what is supposed to be rerendered thus makes it faster
                     className={`row__poster ${isLargeRow && "row__posterLarge"}`} src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
                 ) )}
             </div>
-            <YouTube videoId={trailerURL} opt={opts} />
+            { trailerURL && <YouTube videoId={trailerURL} opt={opts} />}
         </div>
      );
 }
