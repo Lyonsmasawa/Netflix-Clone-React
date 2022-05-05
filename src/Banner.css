@@ -1,21 +1,22 @@
-.banner{
+.banner {
     color: white;
     object-fit: contain;
     height: 448px;
 }
 
-.banner__contents{
+.banner__contents {
     margin-left: 30px;
     padding-top: 140px;
     height: 190px;
 }
 
-.banner__title{
+.banner__title {
     font-size: 3rem;
     font-weight: 800;
     padding-bottom: 0.3rem;
 }
-.banner__description{
+
+.banner__description {
     width: 45rem;
     line-height: 1.3rem;
     padding-top: 1rem;
@@ -23,7 +24,8 @@
     max-width: 360px;
     height: 80px;
 }
-.banner__button{
+
+.banner__button {
     cursor: pointer;
     color: #fff;
     outline: none;
@@ -38,8 +40,13 @@
     background-color: rgba(51, 51, 51, 0.5);
 }
 
-.banner__button:hover{
+.banner__button:hover {
     color: black;
     background-color: whitesmoke;
-    transition: all 0.2s; 
+    transition: all 0.2s;
+}
+
+.banner__fadeBottom {
+    height: 20.4rem;
+    background-image: linear-gradient(180deg, transparent, rgba(17, 17, 17, 0.91), #111);
 }
