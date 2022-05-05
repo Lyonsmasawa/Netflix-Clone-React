@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import YouTube from "react-youtube";
 import axios from "./axios";
 import "./Row.css";
 
 const Row = ({title, fetchURL, isLargeRow}) => {
-    const base_url = "https://image.tmdb.org/t/p/original/"
-    const [movies, setMovies] = useState([])
+    const base_url = "https://image.tmdb.org/t/p/original/";
+    const [movies, setMovies] = useState([]);
 
     // a snippet of code which runs based on a specific condition or variable
     useEffect(() => {
@@ -20,7 +21,16 @@ const Row = ({title, fetchURL, isLargeRow}) => {
         }
         fetchData()
       }
-    }, [fetchURL])
+    }, [fetchURL]);
+
+    const opts = {
+        height: '390',
+        width: "100%",
+        playerVars: {
+          // https://developers.google.com/youtube/player_parameters
+          autoplay: 1,
+        },
+    }
     
 
     return ( 
@@ -35,7 +45,7 @@ const Row = ({title, fetchURL, isLargeRow}) => {
                     className={`row__poster ${isLargeRow && "row__posterLarge"}`} src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
                 ) )}
             </div>
-            {/* {container => poster} */}
+            <YouTube videoId={trailerURL} opt={opts} />
         </div>
      );
 }
