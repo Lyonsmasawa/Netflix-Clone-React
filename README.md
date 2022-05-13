@@ -21,7 +21,7 @@ This is a Netflix Clone.
 This page is made with REACT js.
 
 ## To use the template.
-```
+``` 
 
 ## Usage
 * Requirements
