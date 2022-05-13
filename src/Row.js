@@ -16,7 +16,7 @@ const Row = ({title, fetchURL, isLargeRow}) => {
         // [movies] runs every time the movies change
         async function fetchData(){
             const request = await axios.get(fetchURL);
-            // console.log(request);
+            console.log(`${request} + this happened`);
             // console.table(request.data.results);
             setMovies(request.data.results)
             return request;
